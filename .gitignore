@@ -1,0 +1,15 @@
+# Node dependencies
+node_modules/
+
+# Nuxt stuff
+*.log*
+.nuxt/
+.nitro
+.cache
+.output/
+.env
+dist/
+
+# IDE config
+.idea/
+.vscode/
