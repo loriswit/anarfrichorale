@@ -1,13 +1,23 @@
 <script setup lang="ts">
-const { data } = await useContent("content/items/rehearsals?sort={date:1}&limit=4")
+import { Rehearsal } from "@/composables/use-content-fetch"
 
-const rehearsals = computed(() => data.value?.map((item: any) => {
+const now = new Date().toLocaleString("sv")
+const { data } = await useContentFetch<Rehearsal[]>("content/items/rehearsals", {
+  query: {
+    fields: { date: true, location: true },
+    filter: { date: { $gte: now } },
+    sort: { date: 1 },
+    limit: 4,
+  },
+})
+
+const rehearsals = computed(() => data.value?.map(item => {
   const date = new Date(item.date)
   return {
     ts: date.getTime(),
-    date: date.toLocaleDateString("fr-FR", { dateStyle: "long" }),
-    weekday: date.toLocaleDateString("fr-FR", { weekday: "long" }),
-    time: date.toLocaleTimeString("fr-FR", { hour: "numeric", minute: "2-digit" }),
+    date: date.toLocaleDateString("fr-CH", { dateStyle: "long" }),
+    weekday: date.toLocaleDateString("fr-CH", { weekday: "long" }),
+    time: date.toLocaleTimeString("fr-CH", { hour: "numeric", minute: "2-digit" }),
     location: item.location,
   }
 }))
@@ -27,10 +37,6 @@ const rehearsals = computed(() => data.value?.map((item: any) => {
 </template>
 
 <style scoped>
-h2 {
-  font-size: 2.2em;
-}
-
 .rehearsals {
   display: flex;
   justify-content: center;
@@ -38,14 +44,21 @@ h2 {
   gap: 30px;
 }
 
+@media (max-width: 960px) {
+  .rehearsals {
+    max-width: 500px;
+    margin: auto;
+  }
+}
+
 .rehearsal {
   display: flex;
   flex-direction: column;
   justify-content: center;
 
-  width: 210px;
+  width: 200px;
   aspect-ratio: 1 / 1;
-  gap: 10px;
+  gap: 5px;
   font-size: 1.6em;
   background-color: #22223d;
   border-radius: 100%;

@@ -1,17 +1,15 @@
-<script setup lang="ts">
-useHead({
-  title: "Chorale Anarchiste de Fribourg",
-  htmlAttrs: { lang: "fr" },
-})
-</script>
-
 <template>
 <div>
   <header>
     <MainTitle></MainTitle>
   </header>
   <main>
-    <Rehearsals></Rehearsals>
+    <section>
+      <Rehearsals></Rehearsals>
+    </section>
+    <section>
+      <Contact></Contact>
+    </section>
   </main>
 </div>
 </template>
@@ -19,12 +17,12 @@ useHead({
 <style>
 @font-face {
   font-family: "Junkyard Plush";
-  src: url("@/assets/junkyard_plush.otf");
+  src: url("assets/junkyard_plush.otf");
 }
 
 @font-face {
   font-family: "Magical Brush";
-  src: url("@/assets/dk_magical_brush.otf");
+  src: url("assets/dk_magical_brush.otf");
 }
 
 html {
@@ -49,11 +47,19 @@ body {
 h1, h2, h3, h4 {
   font-family: "Magical Brush", sans-serif;
   font-weight: normal;
+  margin: 0 0 20px;
+}
+
+h2 {
+  font-size: 2.2em;
 }
 
 main {
-  animation: slide-in 1s ease;
-  margin: 0 30px 40px;
+  animation: slide-in 1s ease 0.4s both;
+  margin: 0 25px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
 }
 
 @keyframes slide-in {

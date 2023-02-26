@@ -15,7 +15,7 @@ h1 {
   line-height: 0.85;
   white-space: nowrap;
   overflow: hidden;
-  padding: min(15vw, 100px) 0 min(8vw, 50px);
+  padding: min(15vw, 60px) 0 min(8vw, 50px);
   margin: 0;
 
   --ease-fct: cubic-bezier(.18, .67, .18, 1.07);
