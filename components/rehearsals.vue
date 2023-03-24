@@ -12,7 +12,8 @@ const { data } = await useContentFetch<Rehearsal[]>("content/items/rehearsals", 
 })
 
 const rehearsals = computed(() => data.value?.map(item => {
-  const date = new Date(item.date)
+  const isoDate = item.date.replace(" ", "T") + ":00"
+  const date = new Date(isoDate)
   return {
     ts: date.getTime(),
     date: date.toLocaleDateString("fr-CH", { dateStyle: "long" }),
