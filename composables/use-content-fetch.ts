@@ -15,3 +15,8 @@ export interface Rehearsal {
     date: string
     location: string
 }
+
+export interface Break {
+    active: boolean
+    message: string
+}

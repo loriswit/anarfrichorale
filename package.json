@@ -8,7 +8,9 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@types/markdown-it": "^12.2.3",
     "@types/node": "^18.14.1",
+    "markdown-it": "^13.0.1",
     "nuxt": "^3.2.2",
     "nuxt-icon": "^0.3.2"
   }

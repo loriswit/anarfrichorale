@@ -1,11 +1,19 @@
+<script setup lang="ts">
+import { Break } from "~/composables/use-content-fetch"
+
+const { data: rehearsalsBreak } = await useContentFetch<Break>("content/item/break",
+    { query: { fields: { active: true, message: true } } })
+</script>
+
 <template>
 <div>
   <header>
     <MainTitle></MainTitle>
   </header>
   <main>
-    <section>
-      <Rehearsals></Rehearsals>
+    <section v-if="rehearsalsBreak">
+      <BreakMsg v-if="rehearsalsBreak.active" :message="rehearsalsBreak.message"></BreakMsg>
+      <Rehearsals v-else></Rehearsals>
     </section>
     <section>
       <Contact></Contact>
@@ -44,7 +52,7 @@ body {
   margin: 0;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5, h6 {
   font-family: "Magical Brush", sans-serif;
   font-weight: normal;
   margin: 0 0 20px;
@@ -52,6 +60,16 @@ h1, h2, h3, h4 {
 
 h2 {
   font-size: 2.2em;
+}
+
+a {
+  color: cornflowerblue;
+  text-decoration: none;
+}
+
+a:hover {
+  color: lightskyblue;
+  text-decoration: underline;
 }
 
 main {
