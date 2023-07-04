@@ -25,16 +25,22 @@ const rehearsals = computed(() => data.value?.map(item => {
 </script>
 
 <template>
-<h2>Prochaines répétitions</h2>
-<div class="rehearsals">
-  <div v-for="rehearsal in rehearsals" class="rehearsal">
-    <span v-if="rehearsal.location === 'Red'" class="red">La Red</span>
-    <span v-else class="coutel">La Coutellerie</span>
-    <span>{{ rehearsal.weekday }}</span>
-    <span>{{ rehearsal.date }}</span>
-    <span>à {{ rehearsal.time }}</span>
+<template v-if="rehearsals.length">
+  <h2>Prochaines répétitions</h2>
+  <div class="rehearsals">
+    <div v-for="rehearsal in rehearsals" class="rehearsal">
+      <span v-if="rehearsal.location === 'Red'" class="red">La Red</span>
+      <span v-else class="coutel">La Coutellerie</span>
+      <span>{{ rehearsal.weekday }}</span>
+      <span>{{ rehearsal.date }}</span>
+      <span>à {{ rehearsal.time }}</span>
+    </div>
   </div>
-</div>
+</template>
+<template v-else>
+  <h2>Aucune répétition programmée</h2>
+  <p>Pour le moment...</p>
+</template>
 </template>
 
 <style scoped>
@@ -82,5 +88,9 @@ const rehearsals = computed(() => data.value?.map(item => {
 
 .coutel {
   color: #e7c940;
+}
+
+p {
+  font-size: 2em;
 }
 </style>
