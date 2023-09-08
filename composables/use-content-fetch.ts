@@ -20,3 +20,14 @@ export interface Break {
     active: boolean
     message: string
 }
+
+export interface Sheet {
+    title: string
+    file: File
+}
+
+export interface File {
+    title: string,
+    path: string,
+    size: number,
+}

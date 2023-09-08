@@ -14,7 +14,7 @@ async function sendEmail() {
 <template>
 <h2>Contact</h2>
 <button @click="sendEmail">
-  <Icon name="mdi:email"></Icon>
+  <Icon name="mdi:email"/>
   <span>E-mail</span>
 </button>
 </template>
@@ -30,13 +30,13 @@ button {
   border: none;
   border-radius: 1em;
   cursor: pointer;
-  background-color: #d20645;
+  background-color: var(--clr-red-dark);
   color: white;
   transition: background-color 0.2s, transform 0.1s;
 }
 
 button:hover {
-  background-color: #f36e27;
+  background-color: var(--clr-red);
   transform: scale(1.05);
 }
 

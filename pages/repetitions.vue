@@ -1,32 +1,45 @@
 <script setup lang="ts">
-import { Rehearsal } from "@/composables/use-content-fetch"
+import { Break, Rehearsal } from "~/composables/use-content-fetch"
 
-const now = new Date().toLocaleString("sv")
-const { data } = await useContentFetch<Rehearsal[]>("content/items/rehearsals", {
-  query: {
-    fields: { date: true, location: true },
-    filter: { date: { $gte: now } },
-    sort: { date: 1 },
-    limit: 4,
-  },
+definePageMeta({
+  alias: "/",
 })
 
-const rehearsals = computed(() => data.value?.map(item => {
-  const isoDate = item.date.replace(" ", "T") + ":00"
-  const date = new Date(isoDate)
-  return {
-    ts: date.getTime(),
-    date: date.toLocaleDateString("fr-CH", { dateStyle: "long" }),
-    weekday: date.toLocaleDateString("fr-CH", { weekday: "long" }),
-    time: date.toLocaleTimeString("fr-CH", { hour: "numeric", minute: "2-digit" }),
-    location: item.location,
-  }
-}))
+let rehearsals = ref<unknown>([])
+
+const { data: rehearsalsBreak } = await useContentFetch<Break>("content/item/break",
+    { query: { fields: { active: true, message: true } } })
+
+if (!rehearsalsBreak.value?.active) {
+  const now = new Date().toLocaleString("sv")
+  const { data } = await useContentFetch<Rehearsal[]>("content/items/rehearsals", {
+    query: {
+      fields: { date: true, location: true },
+      filter: { date: { $gte: now } },
+      sort: { date: 1 },
+      limit: 4,
+    },
+  })
+
+  rehearsals = computed(() => data.value?.map(item => {
+    const isoDate = item.date.replace(" ", "T") + ":00"
+    const date = new Date(isoDate)
+    return {
+      ts: date.getTime(),
+      date: date.toLocaleDateString("fr-CH", { dateStyle: "long" }),
+      weekday: date.toLocaleDateString("fr-CH", { weekday: "long" }),
+      time: date.toLocaleTimeString("fr-CH", { hour: "numeric", minute: "2-digit" }),
+      location: item.location,
+    }
+  }))
+}
 </script>
 
 <template>
-<template v-if="rehearsals.length">
-  <h2>Prochaines répétitions</h2>
+<template v-if="rehearsalsBreak.active">
+  <BreakMsg :message="rehearsalsBreak.message"></BreakMsg>
+</template>
+<template v-else-if="rehearsals.length">
   <div class="rehearsals">
     <div v-for="rehearsal in rehearsals" class="rehearsal">
       <span v-if="rehearsal.location === 'Red'" class="red">La Red</span>

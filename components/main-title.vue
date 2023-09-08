@@ -11,11 +11,10 @@
 
 <style scoped>
 h1 {
-  font-size: min(15vw, 8em);
+  font-size: min(15vw, 6em);
   line-height: 0.85;
   white-space: nowrap;
-  overflow: hidden;
-  padding: min(15vw, 60px) 0 min(8vw, 50px);
+  padding: min(15vw, 60px) 0 min(8vw, 30px);
   margin: 0;
 
   --ease-fct: cubic-bezier(.18, .67, .18, 1.07);
@@ -32,7 +31,7 @@ h1 i {
 }
 
 h1 span:not(:first-child, :last-child) {
-  color: #d20645;
+  color: var(--clr-red);
 }
 
 /* LA */

@@ -1,25 +1,14 @@
-<script setup lang="ts">
-import { Break } from "~/composables/use-content-fetch"
-
-const { data: rehearsalsBreak } = await useContentFetch<Break>("content/item/break",
-    { query: { fields: { active: true, message: true } } })
-</script>
-
 <template>
-<div>
-  <header>
-    <MainTitle></MainTitle>
-  </header>
-  <main>
-    <section v-if="rehearsalsBreak">
-      <BreakMsg v-if="rehearsalsBreak.active" :message="rehearsalsBreak.message"></BreakMsg>
-      <Rehearsals v-else></Rehearsals>
-    </section>
-    <section>
-      <Contact></Contact>
-    </section>
-  </main>
-</div>
+<header>
+  <MainTitle/>
+  <Navigation/>
+</header>
+<main>
+  <NuxtPage/>
+</main>
+<footer>
+  <Contact/>
+</footer>
 </template>
 
 <style>
@@ -31,6 +20,17 @@ const { data: rehearsalsBreak } = await useContentFetch<Break>("content/item/bre
 @font-face {
   font-family: "Magical Brush";
   src: url("assets/dk_magical_brush.otf");
+}
+
+:root {
+  --clr-red: #d20645;
+  --clr-red-dark: #751633;
+  --clr-red-light: #e04c7a;
+
+  --clr-blue: #0950bb;
+  --clr-blue-dark: #163175;
+
+  --clr-white: #cfcfee;
 }
 
 html {
@@ -46,10 +46,11 @@ html {
 
 body {
   background-color: #14111c;
-  color: #cfcfee;
+  color: var(--clr-white);
   font-family: "Junkyard Plush", sans-serif;
   text-align: center;
   margin: 0;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -73,11 +74,13 @@ a:hover {
 }
 
 main {
+  margin: 0 25px 60px;
   animation: slide-in 1s ease 0.4s both;
-  margin: 0 25px 25px;
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
+}
+
+footer {
+  margin-bottom: 25px;
+  animation: slide-in 1s ease 0.6s both;
 }
 
 @keyframes slide-in {
