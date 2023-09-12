@@ -26,6 +26,8 @@ export interface Sheet {
     file: File
 }
 
+export type Recording = Sheet
+
 export interface File {
     title: string,
     path: string,

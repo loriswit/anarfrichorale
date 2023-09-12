@@ -8,22 +8,16 @@
       </NuxtLink>
     </li>
     <li>
-      <a href="#">
-        <Icon name="mdi:party-popper"/>
-        Évènements
-      </a>
-    </li>
-    <li>
       <NuxtLink to="/partitions">
         <Icon name="mdi:music"/>
         Partitions
       </NuxtLink>
     </li>
     <li>
-      <a href="#">
+      <NuxtLink to="/enregistrements">
         <Icon name="mdi:volume-high"/>
         Enregistrements
-      </a>
+      </NuxtLink>
     </li>
   </ul>
 </nav>
@@ -109,7 +103,7 @@ nav li:nth-child(2) > a:hover:before {
 }
 
 nav li:nth-child(3) {
-  transform: translateY(-20px);
+  transform: translateY(-35px);
 }
 
 nav li:nth-child(3) > a:before {
@@ -120,15 +114,15 @@ nav li:nth-child(3) > a:hover:before {
   transform: rotate3d(1, 0, 0, 15deg) translateY(2%);
 }
 
-nav li:last-child {
+nav li:nth-child(4) {
   transform: translateY(-35px) rotate(-3deg);
 }
 
-nav li:last-child > a:before {
+nav li:nth-child(4) > a:before {
   transform: rotate3d(1, 0, 0, -20deg) translateY(2%);
 }
 
-nav li:last-child > a:hover:before {
+nav li:nth-child(4) > a:hover:before {
   transform: rotate3d(0, 1, 0, 15deg) translateX(7%);
 }
 
@@ -151,7 +145,7 @@ nav li:last-child > a:hover:before {
     transform: translateY(-30px) rotate(-2deg);
   }
 
-  nav li:last-child {
+  nav li:nth-child(4) {
     transform: translateY(-25px) rotate(3deg);
   }
 }
@@ -174,7 +168,7 @@ nav li:last-child > a:hover:before {
     transform: translateY(-30px) rotate(3deg);
   }
 
-  nav li:last-child {
+  nav li:nth-child(4) {
     transform: translateY(-30px) rotate(-2deg);
   }
 }

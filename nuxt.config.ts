@@ -6,7 +6,7 @@ export default defineNuxtConfig({
             meta: [{ name: "theme-color", content: "#14111c" }],
         },
     },
-    modules: ["nuxt-icon"],
+    modules: ["nuxt-icon", "@pinia/nuxt"],
     runtimeConfig: {
         public: {
             apiBase: undefined,
