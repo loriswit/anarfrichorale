@@ -18,6 +18,7 @@ let init = ref(true)
 
 if (process.client) {
   audio = new Audio(props.src)
+  audio.load()
   audio.addEventListener("canplaythrough", () => ready.value = true)
   audio.addEventListener("loadedmetadata", () => duration.value = audio.duration)
   audio.addEventListener("timeupdate", () => currentTime.value = audio.currentTime)
@@ -83,6 +84,7 @@ button {
   font-size: 1.5rem;
   color: inherit;
   border: none;
+  padding: 0.3rem;
   height: 2rem;
   width: 2rem;
   display: inline-flex;

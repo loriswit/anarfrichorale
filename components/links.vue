@@ -7,7 +7,7 @@ async function sendEmail() {
     baseURL: runtimeConfig.public.apiBase,
     query: { fields: { email: true } },
   })
-  window.open(`mailto:${contact.email}`, "_blank")
+  window.location.href = `mailto:${contact.email}`
 }
 </script>
 

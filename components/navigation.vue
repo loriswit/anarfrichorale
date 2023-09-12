@@ -3,20 +3,17 @@
   <ul>
     <li>
       <NuxtLink to="/repetitions">
-        <Icon name="mdi:calendar"/>
-        Répétitions
+        <span><Icon name="mdi:calendar"/> Répétitions</span>
       </NuxtLink>
     </li>
     <li>
       <NuxtLink to="/partitions">
-        <Icon name="mdi:music"/>
-        Partitions
+        <span><Icon name="mdi:music"/> Partitions</span>
       </NuxtLink>
     </li>
     <li>
       <NuxtLink to="/enregistrements">
-        <Icon name="mdi:volume-high"/>
-        Enregistrements
+        <span><Icon name="mdi:volume-high"/> Enregistrements</span>
       </NuxtLink>
     </li>
   </ul>
@@ -84,6 +81,10 @@ nav li:first-child {
 
 nav li:first-child > a:before {
   transform: rotate3d(0, 1, 0, 20deg) translateX(7%);
+}
+
+nav li span {
+  transform: translateZ(50px) scale(0.8);
 }
 
 nav li:first-child > a:hover:before {
