@@ -7,7 +7,7 @@
   <NuxtPage/>
 </main>
 <footer>
-  <Contact/>
+  <Links/>
 </footer>
 </template>
 
@@ -38,6 +38,7 @@ html {
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  height: 100%;
 }
 
 *, *:before, *:after {
@@ -51,6 +52,13 @@ body {
   text-align: center;
   margin: 0;
   overflow-x: hidden;
+  height: 100%;
+}
+
+#__nuxt {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -76,11 +84,12 @@ a:hover {
 main {
   margin: 0 25px 60px;
   animation: slide-in 1s ease 0.4s both;
+  flex-grow: 1;
 }
 
 footer {
-  margin-bottom: 25px;
-  animation: slide-in 1s ease 0.6s both;
+  padding-bottom: 25px;
+  animation: appear 1s ease 0.6s both;
 }
 
 @keyframes slide-in {
@@ -91,6 +100,15 @@ footer {
   to {
     opacity: 1;
     transform: initial;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 </style>
