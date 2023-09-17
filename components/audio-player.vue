@@ -45,7 +45,7 @@ const shortTime = computed(() => init.value ? duration.value : currentTime.value
 
 <template>
 <div class="player">
-  <button v-if="!playing" title="Jouer" :disabled="!ready" @click="play()">
+  <button v-if="!playing" :title="ready ? 'Lire' : 'Impossible de lire'" :disabled="!ready" @click="play()">
     <Icon name="mdi:play"/>
   </button>
   <button v-else title="Pause" @click="audio.pause()">
@@ -59,7 +59,7 @@ const shortTime = computed(() => init.value ? duration.value : currentTime.value
   <div class="time long">{{ formatTime(currentTime) }} / {{ formatTime(duration) }}</div>
   <div class="time short">{{ formatTime(shortTime) }}</div>
 
-  <button v-if="!muted" class="mute-btn" title="Couper le son" @click="muted = true">
+  <button v-if="!muted" class="mute-btn" title="Couper le son" @click="muted = true" :disabled="!ready">
     <Icon name="mdi:volume-high"/>
   </button>
   <button v-else class="mute-btn" title="Réactiver le son" @click="muted = false">
@@ -92,11 +92,15 @@ button {
   justify-content: center;
 }
 
-button:hover {
+button:disabled {
+  color: grey;
+}
+
+button:not(:disabled):hover {
   background-color: #fff4;
 }
 
-button, input {
+button:not(:disabled), input:not(:disabled) {
   cursor: pointer;
 }
 
