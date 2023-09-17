@@ -12,7 +12,9 @@ const { data } = await useContentFetch<Recording[]>("content/items/recordings", 
 })
 
 const recordings = computed(() => data.value?.map(item => ({
+  id: item._id,
   title: item.title,
+  filename: item.file.title,
   url: runtimeConfig.public.assetsBase + item.file.path,
 })))
 
@@ -26,7 +28,7 @@ onBeforeRouteLeave(() => store.stopAll())
     <div class="recording">
       <div class="title">
         {{ recording.title }}
-        <a :href="recording.url" download="tmp.mp3" title="Télécharger">
+        <a :href="`/download/${recording.id}`" :download="recording.filename" title="Télécharger">
           <Icon name="mdi:download"/>
         </a>
       </div>

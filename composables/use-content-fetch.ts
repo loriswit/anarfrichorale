@@ -24,6 +24,7 @@ export interface Break {
 export interface Sheet {
     title: string
     file: File
+    _id: string,
 }
 
 export type Recording = Sheet
@@ -32,4 +33,5 @@ export interface File {
     title: string,
     path: string,
     size: number,
+    mime: string,
 }
