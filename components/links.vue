@@ -2,35 +2,47 @@
 import { Contact } from "@/composables/use-content-fetch"
 
 async function sendEmail() {
-  const runtimeConfig = useRuntimeConfig()
-  const contact = await $fetch<Contact>("content/item/contact", {
-    baseURL: runtimeConfig.public.apiBase,
-    query: { fields: { email: true } },
-  })
-  window.location.href = `mailto:${contact.email}`
+  const { data: { value: { email } } } = await useContentFetch<Contact>("content/item/contact",
+      { query: { fields: { email: true } } })
+
+  window.location.href = `mailto:${email}`
+}
+
+async function openTelegram() {
+  const { data: { value: { telegram } } } = await useContentFetch<Contact>("content/item/contact",
+      { query: { fields: { telegram: true } } })
+
+  window.location.href = `tg://join?invite=${telegram}`
 }
 </script>
 
 <template>
+<h2>Nous contacter</h2>
 <div class="links">
-  <button @click="sendEmail">
+  <button class="link" @click="sendEmail" title="Envoyer un e-mail">
     <Icon name="mdi:email"/>
-    <span>Nous contacter</span>
   </button>
-  <a href="https://github.com/loriswit/anarfrichorale" title="Code source">
+  <button class="link" @click="openTelegram" title="Groupe telegram">
+    <Icon name="mdi:telegram"/>
+  </button>
+  <a class="link" href="https://github.com/loriswit/anarfrichorale" title="Code source">
     <Icon name="mdi:github"/>
   </a>
 </div>
 </template>
 
 <style scoped>
+h2 {
+  font-size: 1.5em;
+}
+
 .links {
   display: flex;
   justify-content: center;
   gap: 1em;
 }
 
-button, a {
+.link {
   font-family: inherit;
   font-size: 2em;
   display: inline-flex;
@@ -46,17 +58,13 @@ button, a {
   transition: background-color 0.2s, transform 0.1s;
 }
 
-button:hover, a:hover {
+.link:hover {
   color: white;
   background-color: var(--clr-red);
   transform: scale(1.05);
 }
 
-button span {
-  font-size: 1.2em;
-}
-
-a {
+.link {
   width: 1.75em;
   padding: 0;
   display: inline-flex;

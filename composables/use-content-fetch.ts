@@ -9,6 +9,7 @@ export function useContentFetch<T>(request: FetchUrl, options?: FetchOptions<T>)
 
 export interface Contact {
     email: string
+    telegram: string
 }
 
 export interface Rehearsal {
@@ -24,14 +25,14 @@ export interface Break {
 export interface Sheet {
     title: string
     file: File
-    _id: string,
+    _id: string
 }
 
 export type Recording = Sheet
 
 export interface File {
-    title: string,
-    path: string,
-    size: number,
-    mime: string,
+    title: string
+    path: string
+    size: number
+    mime: string
 }
