@@ -39,7 +39,7 @@ if (!rehearsalsBreak.value?.active) {
 <template v-if="rehearsalsBreak.active">
   <BreakMsg :message="rehearsalsBreak.message"></BreakMsg>
 </template>
-<template v-else-if="rehearsals.length">
+<template v-else-if="rehearsals?.length">
   <div class="rehearsals">
     <div v-for="rehearsal in rehearsals" class="rehearsal">
       <span v-if="rehearsal.location === 'Red'" class="red">La Red</span>
