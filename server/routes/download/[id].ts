@@ -1,4 +1,5 @@
 import { Recording } from "~/composables/use-content-fetch"
+import contentDisposition from "content-disposition"
 
 const runtimeConfig = useRuntimeConfig()
 
@@ -20,7 +21,7 @@ export default defineEventHandler(async event => {
     }
 
     setResponseHeaders(event, {
-        "Content-Disposition": `attachment; filename=${recording.file.title}`,
+        "Content-Disposition": contentDisposition(recording.file.title),
         "Content-Type": recording.file.mime,
     })
     await sendStream(event, res.body)
