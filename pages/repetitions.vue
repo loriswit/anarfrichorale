@@ -43,7 +43,8 @@ if (!rehearsalsBreak.value?.active) {
   <div class="rehearsals">
     <div v-for="rehearsal in rehearsals" class="rehearsal">
       <span v-if="rehearsal.location === 'Red'" class="red">La Red</span>
-      <span v-else class="coutel">La Coutellerie</span>
+      <span v-else-if="rehearsal.location === 'Coutellerie'" class="coutel">La Coutellerie</span>
+      <span v-else class="terrier">Le Terrier</span>
       <span>{{ rehearsal.weekday }}</span>
       <span>{{ rehearsal.date }}</span>
       <span>à {{ rehearsal.time }}</span>
@@ -101,6 +102,10 @@ if (!rehearsalsBreak.value?.active) {
 
 .coutel {
   color: #e7c940;
+}
+
+.terrier {
+  color: #16a3b6;
 }
 
 p {
