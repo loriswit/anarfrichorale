@@ -7,6 +7,11 @@
       </NuxtLink>
     </li>
     <li>
+      <NuxtLink to="/evenements">
+        <span><Icon name="mdi:party-popper"/> Évènements</span>
+      </NuxtLink>
+    </li>
+    <li>
       <NuxtLink to="/partitions">
         <span><Icon name="mdi:music"/> Partitions</span>
       </NuxtLink>
@@ -104,7 +109,7 @@ nav li:nth-child(2) > a:hover:before {
 }
 
 nav li:nth-child(3) {
-  transform: translateY(-35px);
+  transform: translateY(-20px);
 }
 
 nav li:nth-child(3) > a:before {
