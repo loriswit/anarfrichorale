@@ -27,9 +27,10 @@
   --clr-red-dark: #751633;
   --clr-red-light: #e04c7a;
 
-  --clr-blue: #0950bb;
-  --clr-blue-dark: #163175;
+  --clr-card: #2e2e79;
+  --clr-card-dark: #22223d;
 
+  --clr-teal: #16a3b6;
   --clr-white: #cfcfee;
 }
 

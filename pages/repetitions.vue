@@ -81,7 +81,7 @@ if (!rehearsalsBreak.value?.active) {
   aspect-ratio: 1 / 1;
   gap: 5px;
   font-size: 1.6em;
-  background-color: #22223d;
+  background-color: var(--clr-card-dark);
   border-radius: 100%;
 }
 
@@ -105,7 +105,7 @@ if (!rehearsalsBreak.value?.active) {
 }
 
 .terrier {
-  color: #16a3b6;
+  color: var(--clr-teal);
 }
 
 p {

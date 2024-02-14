@@ -54,7 +54,7 @@ ul {
   font-size: 1.5em;
   color: white;
   text-align: left;
-  background-color: #ffbbbb28;
+  background-color: var(--clr-card-dark);
   padding: 0.8em;
   border-radius: 1em;
   max-width: 600px;
@@ -81,6 +81,6 @@ a {
 }
 
 a:hover {
-  color: #fffa;
+  color: #acfc;
 }
 </style>

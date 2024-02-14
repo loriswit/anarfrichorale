@@ -45,7 +45,7 @@ a {
   font-size: 1.5em;
   color: white;
   text-align: left;
-  background-color: var(--clr-blue-dark);
+  background-color: var(--clr-card-dark);
   padding: 0.8em 1.2em;
   border-radius: 3em;
   max-width: 600px;
@@ -59,7 +59,7 @@ a {
 
 a:hover {
   text-decoration: none;
-  background-color: var(--clr-blue);
+  background-color: var(--clr-card);
   transform: scale(1.02);
 }
 
@@ -67,6 +67,10 @@ a:hover {
   font-family: "Magical Brush", sans-serif;
   font-size: 0.75em;
   flex-grow: 1;
+}
+
+a:hover > .title {
+  text-decoration: underline;
 }
 
 .size {

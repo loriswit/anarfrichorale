@@ -70,14 +70,14 @@ const eventGroups = computed(() => [
   flex-wrap: wrap;
   margin-bottom: 1.5em;
   padding: 0.8em;
-  background: #22223d;
+  background: var(--clr-card-dark);
   border-radius: 1em;
 }
 
 .title {
   font-family: "Magical Brush", sans-serif;
   font-size: 1.4em;
-  color: #16a3b6;
+  color: var(--clr-teal);
 }
 
 .date {
