@@ -31,11 +31,11 @@ const pastEvents = computed(() => events.value.filter(event => !nextEvents.value
 const eventGroups = computed(() => [
   { title: null, events: nextEvents.value, past: false },
   { title: "Évènements passés", events: pastEvents.value, past: true },
-])
+].filter(({ events }) => events.length > 0))
 </script>
 
 <template>
-<template v-if="events.length > 0" v-for="group in eventGroups">
+<template v-for="group in eventGroups">
   <h2 v-if="group.title" class="group-title">{{ group.title }}</h2>
   <div class="events" v-if="group.events.length">
     <div class="event" v-for="event in group.events">
@@ -50,11 +50,11 @@ const eventGroups = computed(() => [
   </div>
 </template>
 
-<h2 v-else>Il n'y a aucun évènement pour l'instant</h2>
+<h2 v-if="events.length === 0">Il n'y a aucun évènement pour l'instant</h2>
 </template>
 
 <style scoped>
-.group-title {
+.group-title:not(:first-child) {
   margin-top: 2em;
 }
 
