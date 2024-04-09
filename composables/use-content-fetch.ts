@@ -42,3 +42,9 @@ export interface File {
     size: number
     mime: string
 }
+
+export interface Location {
+    name: string
+    address: string
+    osmurl: string
+}

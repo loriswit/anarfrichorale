@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Break, Rehearsal } from "~/composables/use-content-fetch"
+import { Break, Location, Rehearsal } from "~/composables/use-content-fetch"
 
 definePageMeta({
   alias: "/",
@@ -33,6 +33,10 @@ if (!rehearsalsBreak.value?.active) {
     }
   }))
 }
+
+const { data: location } = await useContentFetch<Location>("content/item/location",
+    { query: { fields: { name: true, address: true, osmurl: true } } })
+
 </script>
 
 <template>
@@ -55,6 +59,13 @@ if (!rehearsalsBreak.value?.active) {
   <h2>Aucune répétition programmée</h2>
   <p>Pour le moment...</p>
 </template>
+<div class="location">
+  <div class="address">
+    <h2>{{ location.name }}</h2>
+    <p v-html="location.address.replaceAll('\n', '<br>')"></p>
+  </div>
+  <iframe :src="location.osmurl"></iframe>
+</div>
 </template>
 
 <style scoped>
@@ -69,6 +80,19 @@ if (!rehearsalsBreak.value?.active) {
   .rehearsals {
     max-width: 500px;
     margin: auto;
+  }
+
+  .location {
+    flex-direction: column;
+  }
+
+  .location::before {
+    content: "* * *";
+    margin-bottom: 3em;
+  }
+
+  .location .address {
+    margin-bottom: 2em;
   }
 }
 
@@ -110,5 +134,32 @@ if (!rehearsalsBreak.value?.active) {
 
 p {
   font-size: 2em;
+}
+
+.location {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 680px;
+  margin: 60px auto auto;
+}
+
+.location h2 {
+  color: var(--clr-teal);
+}
+
+.location .address {
+  text-align: left;
+}
+
+.location .address p {
+  margin: 0;
+}
+
+.location iframe {
+  border: none;
+  border-radius: 1em;
+  height: 260px;
+  width: min(400px, 90vw);
 }
 </style>
