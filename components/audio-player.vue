@@ -9,25 +9,28 @@ const store = useAudioStore()
 
 let audio: HTMLAudioElement
 
-let ready = ref(false)
+let ready = ref(true)
 let currentTime = ref(0)
 let duration = ref(0)
 let playing = ref(false)
 let muted = ref(false)
 let init = ref(true)
 
-if (process.client) {
-  audio = new Audio(props.src)
-  audio.load()
-  audio.addEventListener("canplaythrough", () => ready.value = true)
-  audio.addEventListener("loadedmetadata", () => duration.value = audio.duration)
-  audio.addEventListener("timeupdate", () => currentTime.value = audio.currentTime)
-  audio.addEventListener("play", () => playing.value = true)
-  audio.addEventListener("pause", () => playing.value = false)
+function initPlayer() {
+  if (process.client) {
+    audio = new Audio(props.src)
+    audio.load()
+    audio.muted = muted.value
+    audio.addEventListener("canplaythrough", () => ready.value = true)
+    audio.addEventListener("loadedmetadata", () => duration.value = audio.duration)
+    audio.addEventListener("timeupdate", () => currentTime.value = audio.currentTime)
+    audio.addEventListener("play", () => playing.value = true)
+    audio.addEventListener("pause", () => playing.value = false)
 
-  watchEffect(() => audio.muted = muted.value)
+    watchEffect(() => audio.muted = muted.value)
 
-  store.register(audio)
+    store.register(audio)
+  }
 }
 
 function formatTime(time: number) {
@@ -35,6 +38,7 @@ function formatTime(time: number) {
 }
 
 function play() {
+  if (!audio) initPlayer()
   store.stopAll(audio)
   audio.play()
   init.value = false
