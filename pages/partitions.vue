@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Sheet } from "~/composables/use-content-fetch"
+import type { Sheet } from "~/composables/use-content-fetch"
 
 const runtimeConfig = useRuntimeConfig()
 

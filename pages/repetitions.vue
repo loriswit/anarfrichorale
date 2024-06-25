@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Break, Location, Rehearsal } from "~/composables/use-content-fetch"
+import type { Break, Location, Rehearsal } from "~/composables/use-content-fetch"
 
 definePageMeta({
   alias: "/",

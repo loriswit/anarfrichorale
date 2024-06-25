@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Recording } from "~/composables/use-content-fetch"
+import type { Recording } from "~/composables/use-content-fetch"
 import { useAudioStore } from "~/store/audio"
 
 const runtimeConfig = useRuntimeConfig()

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Contact } from "@/composables/use-content-fetch"
+import type { Contact } from "@/composables/use-content-fetch"
 
 async function sendEmail() {
   const { data: { value: { email } } } = await useContentFetch<Contact>("content/item/contact",

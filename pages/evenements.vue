@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Event } from "~/composables/use-content-fetch"
+import type { Event } from "~/composables/use-content-fetch"
 import MarkdownIt from "markdown-it"
 
 const md = new MarkdownIt({ linkify: true })

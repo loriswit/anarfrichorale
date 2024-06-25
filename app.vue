@@ -1,9 +1,14 @@
+<script setup lang="ts">
+const { isLoading } = useLoadingIndicator()
+</script>
+
 <template>
 <header>
+  <NuxtLoadingIndicator :height="5" color="var(--clr-red)"/>
   <MainTitle/>
   <Navigation/>
 </header>
-<main>
+<main :class="{ loading: isLoading }">
   <NuxtPage/>
 </main>
 <footer>
@@ -86,6 +91,12 @@ main {
   margin: 0 25px 60px;
   animation: slide-in 1s ease 0.4s both;
   flex-grow: 1;
+  transition: 0.5s filter;
+}
+
+main.loading {
+  filter: opacity(50%);
+  pointer-events: none;
 }
 
 footer {

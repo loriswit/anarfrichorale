@@ -1,4 +1,4 @@
-import { Recording } from "~/composables/use-content-fetch"
+import type { Recording } from "~/composables/use-content-fetch"
 import contentDisposition from "content-disposition"
 
 const runtimeConfig = useRuntimeConfig()
