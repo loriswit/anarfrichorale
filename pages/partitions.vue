@@ -6,6 +6,7 @@ const runtimeConfig = useRuntimeConfig()
 const { data } = await useContentFetch<Sheet[]>("content/items/sheets", {
   query: {
     fields: { title: true, file: true },
+    filter: { file: { $ne: null } }, // skip if missing file
     sort: { title: 1 },
   },
 })
