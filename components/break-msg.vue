@@ -5,7 +5,7 @@ defineProps({
   message: { type: String, required: true },
 })
 
-const md = new MarkdownIt({ linkify: true })
+const md = new MarkdownIt({ linkify: true, typographer: true })
 </script>
 
 <template>

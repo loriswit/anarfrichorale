@@ -17,6 +17,10 @@ export interface Rehearsal {
     location: string
 }
 
+export interface About {
+    content: string
+}
+
 export interface Event {
     title: string
     date: string

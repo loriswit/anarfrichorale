@@ -7,6 +7,11 @@
       </NuxtLink>
     </li>
     <li>
+      <NuxtLink to="/a-propos">
+        <span><Icon name="mdi:about-circle-outline"/> À propos</span>
+      </NuxtLink>
+    </li>
+    <li>
       <NuxtLink to="/evenements">
         <span><Icon name="mdi:party-popper"/> Évènements</span>
       </NuxtLink>
@@ -80,6 +85,13 @@ nav a.router-link-active {
   pointer-events: none;
 }
 
+nav li span {
+  transform: translateZ(50px) scale(0.8);
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+
 nav li:first-child {
   transform: translateY(-50px) rotate(4deg);
 }
@@ -88,16 +100,12 @@ nav li:first-child > a:before {
   transform: rotate3d(0, 1, 0, 20deg) translateX(7%);
 }
 
-nav li span {
-  transform: translateZ(50px) scale(0.8);
-}
-
 nav li:first-child > a:hover:before {
   transform: rotate3d(0, 1, 0, -15deg) translateX(-7%);
 }
 
 nav li:nth-child(2) {
-  transform: translateY(-30px) rotate(2deg);
+  transform: translateY(-25px) rotate(2deg);
 }
 
 nav li:nth-child(2) > a:before {
@@ -109,31 +117,43 @@ nav li:nth-child(2) > a:hover:before {
 }
 
 nav li:nth-child(3) {
-  transform: translateY(-20px);
+  transform: translateY(-10px) rotate(-1deg);
 }
 
 nav li:nth-child(3) > a:before {
-  transform: rotate3d(0, 1, 0, -20deg) translateX(-7%);
+  transform: rotate3d(1, 0, 0, 15deg) translateX(2%);
 }
 
 nav li:nth-child(3) > a:hover:before {
-  transform: rotate3d(1, 0, 0, 15deg) translateY(2%);
+  transform: rotate3d(0, 1, 0, -15deg) translateX(-4%);
 }
 
 nav li:nth-child(4) {
-  transform: translateY(-35px) rotate(-3deg);
+  transform: translateY(-20px);
 }
 
 nav li:nth-child(4) > a:before {
-  transform: rotate3d(1, 0, 0, -20deg) translateY(2%);
+  transform: rotate3d(0, 1, 0, -20deg) translateX(-7%);
 }
 
 nav li:nth-child(4) > a:hover:before {
+  transform: rotate3d(1, 0, 0, 15deg) translateY(2%);
+}
+
+nav li:nth-child(5) {
+  transform: translateY(-40px) rotate(-3deg);
+}
+
+nav li:nth-child(5) > a:before {
+  transform: rotate3d(1, 0, 0, -20deg) translateY(2%);
+}
+
+nav li:nth-child(5) > a:hover:before {
   transform: rotate3d(0, 1, 0, 15deg) translateX(7%);
 }
 
 
-@media (max-width: 930px) and (min-width: 485px) {
+@media (max-width: 1150px) and (min-width: 485px) {
   nav {
     max-width: 500px;
     margin: auto;
@@ -152,7 +172,11 @@ nav li:nth-child(4) > a:hover:before {
   }
 
   nav li:nth-child(4) {
-    transform: translateY(-25px) rotate(3deg);
+    transform: translateY(-30px) rotate(2deg);
+  }
+
+  nav li:nth-child(5) {
+    transform: translateY(-26px) rotate(3deg);
   }
 }
 
@@ -175,7 +199,11 @@ nav li:nth-child(4) > a:hover:before {
   }
 
   nav li:nth-child(4) {
-    transform: translateY(-30px) rotate(-2deg);
+    transform: translateY(-30px) rotate(-3deg);
+  }
+
+  nav li:nth-child(5) {
+    transform: translateY(-30px) rotate(2deg);
   }
 }
 </style>

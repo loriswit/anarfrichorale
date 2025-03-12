@@ -2,7 +2,7 @@
 import type { Event } from "~/composables/use-content-fetch"
 import MarkdownIt from "markdown-it"
 
-const md = new MarkdownIt({ linkify: true })
+const md = new MarkdownIt({ linkify: true, typographer: true })
 
 const { data } = await useContentFetch<Event[]>("content/items/events", {
   query: {
