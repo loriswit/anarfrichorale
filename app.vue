@@ -19,12 +19,12 @@ const { isLoading } = useLoadingIndicator()
 <style>
 @font-face {
   font-family: "Junkyard Plush";
-  src: url("assets/junkyard_plush.otf");
+  src: url("assets/fonts/junkyard_plush.otf");
 }
 
 @font-face {
   font-family: "Magical Brush";
-  src: url("assets/dk_magical_brush.otf");
+  src: url("assets/fonts/dk_magical_brush.otf");
 }
 
 :root {

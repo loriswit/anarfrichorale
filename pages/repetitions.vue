@@ -40,6 +40,12 @@ const { data: location } = await useContentFetch<Location>("content/item/locatio
 </script>
 
 <template>
+<div class="portraits">
+  <img src="~/assets/images/pyotr-kropotkin.webp" alt="Portrait de Pyotr Kropotkin" loading="lazy">
+  <img src="~/assets/images/louise-michel.webp" alt="Portrait de Louise Michel" loading="lazy">
+  <img src="~/assets/images/emma-goldman.webp" alt="Portrait de Emma Goldman" loading="lazy">
+  <img src="~/assets/images/mikhail-bakunin.webp" alt="Portrait de Mikhail Bakunin" loading="lazy">
+</div>
 <template v-if="rehearsalsBreak.active">
   <BreakMsg :message="rehearsalsBreak.message"></BreakMsg>
 </template>
@@ -161,5 +167,91 @@ p {
   border-radius: 1em;
   height: 260px;
   width: min(400px, 90vw);
+}
+
+.portraits > img {
+  pointer-events: none;
+  position: absolute;
+  opacity: 65%;
+  z-index: -10;
+  filter: sepia(12%) hue-rotate(201deg) saturate(300%);
+}
+
+.portraits > img:nth-child(1) {
+  width: 25vw;
+  left: -60px;
+  top: calc(520px - 30vw);
+}
+
+.portraits > img:nth-child(2) {
+  width: 23vw;
+  left: 10vw;
+  top: calc(700px - 18vw);
+}
+
+.portraits > img:nth-child(3) {
+  width: 23vw;
+  left: 65vw;
+  top: calc(700px - 18vw);
+}
+
+.portraits > img:nth-child(4) {
+  width: 25vw;
+  left: 75vw;
+  top: calc(550px - 30vw);
+}
+
+@media (max-width: 960px) {
+  .location {
+    margin-bottom: 30vw;
+  }
+
+  .portraits > img:nth-child(1) {
+    top: 1000px;
+    left: 10vw;
+    z-index: -20;
+  }
+
+  .portraits > img:nth-child(2) {
+    top: 1020px;
+    left: 28vw;
+  }
+
+  .portraits > img:nth-child(3) {
+    top: 1010px;
+    left: 45vw;
+  }
+
+  .portraits > img:nth-child(4) {
+    top: 1000px;
+    left: 62vw;
+    z-index: -20;
+  }
+}
+
+@media (max-width: 479px) {
+  .portraits > img:nth-child(n) {
+    top: 1480px;
+  }
+
+  .portraits > img:nth-child(1) {
+    width: 29vw;
+    left: -4vw;
+  }
+
+  .portraits > img:nth-child(2) {
+    width: 26vw;
+    left: 22vw;
+  }
+
+  .portraits > img:nth-child(3) {
+    width: 26vw;
+    left: 43vw;
+  }
+
+  .portraits > img:nth-child(4) {
+    width: 29vw;
+    left: 65vw;
+  }
 }
 </style>
